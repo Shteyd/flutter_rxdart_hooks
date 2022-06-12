@@ -1,0 +1,19 @@
+name: flutter_rxdart_hooks
+description: Create hook with BehaviorSubject.
+version: 0.0.1
+homepage: https://github.com/Shteyd/flutter_rxdart_hooks
+
+environment:
+  sdk: ">=2.17.3 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_hooks: ^0.18.4
+  rxdart: ^0.27.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
