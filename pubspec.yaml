@@ -1,6 +1,6 @@
 name: flutter_rxdart_hooks
 description: This package is intended to make it easier to use rxdart with flutter_hooks. Created hooks for working with BehaviorSubject
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/Shteyd/flutter_rxdart_hooks
 
 environment:
