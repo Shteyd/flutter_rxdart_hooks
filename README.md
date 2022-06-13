@@ -8,5 +8,6 @@ Added useBehaviorSubjectController()
 ## Usage
 
 ```yaml
-flutter_rxdart_hooks: ^0.0.2
+dependencies:
+  flutter_rxdart_hooks: ^0.0.2
 ```
