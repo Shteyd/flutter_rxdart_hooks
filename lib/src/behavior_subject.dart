@@ -1,11 +1,15 @@
 part of 'hook.dart';
 
-BehaviorSubject<T> useBehaviorStreamController<T>(
+/// Creates a [BehaviorSubject] which is automatically disposed when necessary.
+///
+/// See also:
+///   * [BehaviorSubject], the created object
+BehaviorSubject<T> useBehaviorSubjectController<T>(
     {bool sync = false,
     VoidCallback? onListen,
     VoidCallback? onCancel,
     List<Object>? keys}) {
-  return use(_BehaviorStreamControllerHook(
+  return use(_BehaviorSubjectControllerHook(
     onCancel: onCancel,
     onListen: onListen,
     sync: sync,
@@ -13,8 +17,8 @@ BehaviorSubject<T> useBehaviorStreamController<T>(
   ));
 }
 
-class _BehaviorStreamControllerHook<T> extends Hook<BehaviorSubject<T>> {
-  const _BehaviorStreamControllerHook({
+class _BehaviorSubjectControllerHook<T> extends Hook<BehaviorSubject<T>> {
+  const _BehaviorSubjectControllerHook({
     required this.sync,
     this.onListen,
     this.onCancel,
@@ -26,12 +30,12 @@ class _BehaviorStreamControllerHook<T> extends Hook<BehaviorSubject<T>> {
   final VoidCallback? onCancel;
 
   @override
-  _BehaviorStreamControllerHookState<T> createState() =>
-      _BehaviorStreamControllerHookState<T>();
+  _BehaviorSubjectControllerHookState<T> createState() =>
+      _BehaviorSubjectControllerHookState<T>();
 }
 
-class _BehaviorStreamControllerHookState<T>
-    extends HookState<BehaviorSubject<T>, _BehaviorStreamControllerHook<T>> {
+class _BehaviorSubjectControllerHookState<T>
+    extends HookState<BehaviorSubject<T>, _BehaviorSubjectControllerHook<T>> {
   late final BehaviorSubject<T> _controller;
 
   @override
@@ -45,7 +49,7 @@ class _BehaviorStreamControllerHookState<T>
   }
 
   @override
-  void didUpdateHook(_BehaviorStreamControllerHook<T> oldHook) {
+  void didUpdateHook(_BehaviorSubjectControllerHook<T> oldHook) {
     super.didUpdateHook(oldHook);
     if (oldHook.onListen != hook.onListen) {
       _controller.onListen = hook.onListen;
@@ -62,5 +66,5 @@ class _BehaviorStreamControllerHookState<T>
   void dispose() => _controller.close();
 
   @override
-  String get debugLabel => 'useBehaviorStreamController';
+  String get debugLabel => 'useBehaviorSubjectController';
 }
